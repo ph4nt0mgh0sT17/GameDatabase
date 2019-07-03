@@ -14,13 +14,15 @@ namespace GameDatabase.ViewModels
 {
     public class MainWindowViewModel : DependencyObject
     {
+        #region Private variables
         private string searchQuery;
         private ApiEngine apiEngine;
         private GameSearchResult selectedGame;
         private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
-        private GameInfoViewModel gameModel;
         private ScrollViewer gameInformation;
+        #endregion
 
+        #region Constructor
         /// <summary>
         /// Initiliazing ViewModel
         /// </summary>
@@ -35,7 +37,9 @@ namespace GameDatabase.ViewModels
             // Adding ScrollViewer from View into ViewModel so we can handle it
             GameInformation = gameInformation;
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Gets games by parameter query game
         /// </summary>
@@ -47,14 +51,22 @@ namespace GameDatabase.ViewModels
             gameResults.ToList().ForEach(GameSearchResults.Add);
         }
 
-        private async void GetGame(GameSearchResult game)
+        /// <summary>
+        /// Gets all information about current game.
+        /// And sets it to the ScrollViewer -> GameInformation
+        /// </summary>
+        /// <param name="game">Current game</param>
+        private async void GetGameInformation(GameSearchResult game)
         {
             GameInformationModel gameInfo = await apiEngine.GetGame(game);
 
             GameInfoView view = new GameInfoView(gameInfo);
             GameInformation.Content = new GameInfoView(gameInfo);
         }
-        
+
+        #endregion
+
+        #region Properties
         /// <summary>
         /// Need this scroll viewer to know where to add GameInformationView
         /// </summary>
@@ -93,6 +105,9 @@ namespace GameDatabase.ViewModels
         public static DependencyProperty SearchResultsVisibility =
             DependencyProperty.Register("GameSearchResultsVisibility", typeof(Visibility), typeof(MainWindowViewModel), new UIPropertyMetadata(Visibility.Hidden));
 
+        /// <summary>
+        /// Visibility of Game search results
+        /// </summary>
         public Visibility GameSearchResultsVisibility
         {
             get
@@ -124,7 +139,7 @@ namespace GameDatabase.ViewModels
                     selectedGame = value;
                     GameSearchResults.Clear();
                     GameSearchResultsVisibility = Visibility.Hidden;
-                    GetGame(value);
+                    GetGameInformation(value);
                 }
             }
         }
@@ -159,6 +174,8 @@ namespace GameDatabase.ViewModels
                 }
             }
         }
+
+        #endregion
 
 
     }
