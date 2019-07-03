@@ -7,8 +7,9 @@ using Newtonsoft.Json;
 using System.Web;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using GameDatabase.Models.ApiModel;
 
-namespace GameDatase.API
+namespace GameDatabase.API
 {
     public class ApiEngine
     {
@@ -20,7 +21,7 @@ namespace GameDatase.API
         /// <summary>
         /// Url of REST api which gives json information about searched games
         /// </summary>
-        private string GAME_URL = "https://api-v3.igdb.com/game";
+        private string GAME_URL = "https://api-v3.igdb.com/games";
 
         private readonly HttpClient httpClient;
 
@@ -29,12 +30,12 @@ namespace GameDatase.API
             this.httpClient = new HttpClient();
         }
 
-        public async Task<object> GetSearchedGames(string searchedGame)
+        public async Task<List<GameSearchResult>> GetSearchedGames(string searchedGame)
         {
             // Request message that will be sent to API endpoint
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, GAME_URL);
 
-            string jsonPost = $"fields name; search \"{searchedGame}\"";
+            string jsonPost = $"fields name; search \"{searchedGame}\";";
 
             // Adding Accept header to make sure that output will be json
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -49,9 +50,9 @@ namespace GameDatase.API
             // Read json body of the response
             string jsonResponse = await response.Content.ReadAsStringAsync();
 
+            List<GameSearchResult> gameResults = JsonConvert.DeserializeObject<List<GameSearchResult>>(jsonResponse);
 
-
-            return "";
+            return gameResults;
 
 
         }
