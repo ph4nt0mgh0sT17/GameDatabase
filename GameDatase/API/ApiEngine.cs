@@ -43,8 +43,15 @@ namespace GameDatase.API
             // Added json body to request 
             request.Content = new StringContent(jsonPost, Encoding.UTF8, "application/json");
 
+            // Request message is asynchronously posted
+            HttpResponseMessage response = await httpClient.SendAsync(request);
+
+            // Read json body of the response
+            string jsonResponse = await response.Content.ReadAsStringAsync();
 
 
+
+            return "";
 
 
         }
