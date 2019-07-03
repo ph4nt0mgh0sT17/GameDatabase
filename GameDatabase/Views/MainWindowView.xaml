@@ -3,13 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:GameDatabase.Views"
         xmlns:local="clr-namespace:GameDatabase"
         mc:Ignorable="d"
+        xmlns:vm="clr-namespace:GameDatabase.ViewModels"
         Title="Game database" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <ListView ItemsSource="{Binding Path=GameSearchResults}" DisplayMemberPath="Name" Visibility="{Binding Path=GameSearchResultsVisibility, Mode=OneWay}" MaxHeight="125"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="7*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Search game: " />
+                <StackPanel>
+                    <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ListView ItemsSource="{Binding Path=GameSearchResults}" DisplayMemberPath="Name" Visibility="{Binding Path=GameSearchResultsVisibility, Mode=OneWay}" Width="300" MaxHeight="125"
+                          SelectedItem="{Binding Path=SelectedGame, Mode=OneWayToSource}"/>
+                </StackPanel>
+            </StackPanel>
+        
+            <ScrollViewer Grid.Row="2" x:Name="GameInformation" ScrollViewer.CanContentScroll="True">
+                
+            </ScrollViewer>
+            
+        
     </Grid>
 </Window>

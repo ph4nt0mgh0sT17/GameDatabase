@@ -25,7 +25,7 @@ namespace GameDatabase.Views
         public MainWindowView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new MainWindowViewModel(GameInformation);
         }
 
         
