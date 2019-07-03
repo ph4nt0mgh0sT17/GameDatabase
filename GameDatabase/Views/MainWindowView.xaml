@@ -8,8 +8,8 @@
         Title="Game database" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <TextBox Text="{Binding Path=Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <ListView ItemsSource="{Binding Path=Results}" DisplayMemberPath="Name"/>
+            <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <ListView ItemsSource="{Binding Path=GameSearchResults}" DisplayMemberPath="Name" Visibility="{Binding Path=GameSearchResultsVisibility, Mode=OneWay}" MaxHeight="125"/>
         </StackPanel>
     </Grid>
 </Window>
