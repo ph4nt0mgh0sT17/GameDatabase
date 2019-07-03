@@ -16,7 +16,7 @@ namespace GameDatabase.API
         /// <summary>
         /// Api key which is mandatory in queries we will be using
         /// </summary>
-        private string API_KEY = "e418e2c994f367ed6bc11acd817c7dc0";
+        private string API_KEY = "d3c96f4f6bf27fd54e01d07c869d6b79";
 
         /// <summary>
         /// Url of REST api which gives json information about searched games
