@@ -1,6 +1,4 @@
-﻿using GameDatabase.Models.ApiModel;
-using GameDatabase.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameDatabase.Views
+namespace GameDatabase
 {
     /// <summary>
     /// Interaction logic for GameInfoView.xaml
     /// </summary>
     public partial class GameInfoView : UserControl
     {
-        public GameInfoView(GameInformationModel game)
+        public GameInfoView()
         {
             InitializeComponent();
-            DataContext = new GameInfoViewModel(game);
         }
     }
 }
