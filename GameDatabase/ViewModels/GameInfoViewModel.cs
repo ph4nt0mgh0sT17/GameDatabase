@@ -4,40 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using GameDatabase.Models.ApiModel;
 
-namespace GameDatabase.ViewModels
+namespace GameDatabase
 {
-    public class GameInfoViewModel : DependencyObject
+    public class GameInfoViewModel : BaseViewModel
     {
-        private GameInformationModel game;
+        private GameInformationModel mGame;
 
-        /// <summary>
-        /// Will set all information about game
-        /// </summary>
+
         public GameInfoViewModel(GameInformationModel game)
         {
-            Game = game;
+            mGame = game;
         }
 
-        public static DependencyProperty GameDependency =
-            DependencyProperty.Register("Game", 
-                typeof(GameInformationModel), 
-                typeof(GameInfoViewModel), 
-                new PropertyMetadata(
-                    new GameInformationModel()));
         public GameInformationModel Game
         {
             get
             {
-                return (GameInformationModel)GetValue(GameDependency);
+                return mGame;
             }
 
             set
             {
                 if (value != null)
                 {
-                    SetValue(GameDependency, value);
+                    mGame = value;
+                    RaisePropertyChanged(nameof(Game));
                 }
             }
         }
