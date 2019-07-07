@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameDatabase.Models.ApiModel
+namespace GameDatabase
 {
     public class GameInformationModel
     {
