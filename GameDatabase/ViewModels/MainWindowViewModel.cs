@@ -1,32 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using GameDatabase.API;
-using GameDatabase.Models.ApiModel;
-using GameDatabase.Views;
 
-namespace GameDatabase.ViewModels
+namespace GameDatabase
 {
-    public class MainWindowViewModel : DependencyObject
+    public class MainWindowViewModel : BaseViewModel
     {
         #region Private variables
         private string searchQuery;
         private ApiEngine apiEngine;
         private GameSearchResult selectedGame;
+        private Visibility mGameSearchResultsVisibility;
         private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
-        private ScrollViewer gameInformation;
+        private GameInfoViewModel mCurrentGame;
         #endregion
 
         #region Constructor
         /// <summary>
         /// Initiliazing ViewModel
         /// </summary>
-        public MainWindowViewModel(ScrollViewer gameInformation)
+        public MainWindowViewModel()
         {
             // Initialize of Api engine
             apiEngine = new ApiEngine();
@@ -34,8 +33,7 @@ namespace GameDatabase.ViewModels
             // Setting visibility of results as hidden
             GameSearchResultsVisibility = Visibility.Hidden;
 
-            // Adding ScrollViewer from View into ViewModel so we can handle it
-            GameInformation = gameInformation;
+            CurrentGame = new GameInfoViewModel(new GameInformationModel() { Name = "Test 123" }); 
         }
         #endregion
 
@@ -59,29 +57,12 @@ namespace GameDatabase.ViewModels
         private async void GetGameInformation(GameSearchResult game)
         {
             GameInformationModel gameInfo = await apiEngine.GetGame(game);
-
-            GameInfoView view = new GameInfoView(gameInfo);
-            GameInformation.Content = new GameInfoView(gameInfo);
+            CurrentGame = new GameInfoViewModel(gameInfo);
         }
 
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Need this scroll viewer to know where to add GameInformationView
-        /// </summary>
-        public ScrollViewer GameInformation
-        {
-            get
-            {
-                return gameInformation;
-            }
-
-            set
-            {
-                gameInformation = value;
-            }
-        }
 
         /// <summary>
         /// Game search results
@@ -96,14 +77,12 @@ namespace GameDatabase.ViewModels
             set
             {
                 gameSearchResults = value;
+                RaisePropertyChanged(nameof(GameSearchResults));
             }
         }
         
-        /// <summary>
-        /// Dependency property for visibility of search results so it can be changable during program
-        /// </summary>
-        public static DependencyProperty SearchResultsVisibility =
-            DependencyProperty.Register("GameSearchResultsVisibility", typeof(Visibility), typeof(MainWindowViewModel), new UIPropertyMetadata(Visibility.Hidden));
+
+        
 
         /// <summary>
         /// Visibility of Game search results
@@ -112,12 +91,13 @@ namespace GameDatabase.ViewModels
         {
             get
             {
-                return (Visibility)GetValue(SearchResultsVisibility);
+                return mGameSearchResultsVisibility;
             }
 
             set
             {
-                SetValue(SearchResultsVisibility, value);
+                    mGameSearchResultsVisibility = value;
+                    RaisePropertyChanged(nameof(GameSearchResultsVisibility));
             }
         }
 
@@ -175,8 +155,21 @@ namespace GameDatabase.ViewModels
             }
         }
 
+        public GameInfoViewModel CurrentGame
+        {
+            get
+            {
+                return mCurrentGame;
+            }
+
+            set
+            {
+                mCurrentGame = value;
+                RaisePropertyChanged(nameof(CurrentGame));
+            }
+        }
+
+
         #endregion
-
-
     }
 }
