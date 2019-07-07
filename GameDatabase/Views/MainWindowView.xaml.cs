@@ -1,4 +1,4 @@
-﻿using GameDatabase.ViewModels;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GameDatabase.Views
+namespace GameDatabase
 {
     /// <summary>
     /// Interaction logic for MainWindowView.xaml
@@ -25,7 +25,7 @@ namespace GameDatabase.Views
         public MainWindowView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(GameInformation);
+            DataContext = new MainWindowViewModel();
         }
 
         
