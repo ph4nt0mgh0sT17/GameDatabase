@@ -74,7 +74,8 @@
     </Compile>
     <Compile Include="Models\ApiModel\GameInformationModel.cs" />
     <Compile Include="Models\ApiModel\GameSearchResult.cs" />
-    <Compile Include="ViewModels\Command.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\GameInfoView.xaml.cs">
