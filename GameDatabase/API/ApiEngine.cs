@@ -7,9 +7,8 @@ using Newtonsoft.Json;
 using System.Web;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using GameDatabase.Models.ApiModel;
 
-namespace GameDatabase.API
+namespace GameDatabase
 {
     public class ApiEngine
     {
