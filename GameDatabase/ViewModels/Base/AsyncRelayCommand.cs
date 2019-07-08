@@ -34,9 +34,17 @@ namespace GameDatabase
         /// <param name="methodToBeExecuted">Method that will be executed</param>
         public AsyncRelayCommand(Func<Task> methodToBeExecuted)
         {
-            this.mExecute = methodToBeExecuted;
-            mCanExecute = null;
-            mErrorHandler = null;
+            if (methodToBeExecuted == null)
+            {
+                throw new NullReferenceException("Async relay command has to have defined method.");
+            }
+
+            else
+            {
+                this.mExecute = methodToBeExecuted;
+                mCanExecute = null;
+                mErrorHandler = null;
+            }
         }
 
 
