@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:GameDatabase"
              StartupUri="Views/Windows/GameInformationWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <!-- All styles for the project -->
+                    
+                    
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
