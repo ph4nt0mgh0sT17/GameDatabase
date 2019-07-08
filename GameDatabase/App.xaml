@@ -5,6 +5,8 @@
              StartupUri="Views/Windows/GameInformationWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
+            <!--  -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Colors.xaml"/>
                 <ResourceDictionary Source="Styles/Fonts.xaml"/>

@@ -10,7 +10,8 @@ namespace GameDatabase
     {
         #region Private members
 
-        string mVersion;
+        private string mVersion;
+        private string mVersion2;
 
         #endregion
 
@@ -22,6 +23,7 @@ namespace GameDatabase
         public GameInformationWindowViewModel()
         {
             Version = "Game Database 1.00";
+            VersionV2 = "Game Database v1.00";
             GenerateVersionCommand = new AsyncRelayCommand(GenerateVersion);
             counter = 0;
         }
@@ -32,9 +34,9 @@ namespace GameDatabase
         /// <returns></returns>
         private async Task GenerateVersion()
         {
-            counter = 1;
             // Clear version
             Version = "Game Database v1.";
+            VersionV2 = "Game Database v1.";
 
             // Instantiate generator of automatic generation...
             Random generator = new Random();
@@ -46,12 +48,14 @@ namespace GameDatabase
                 Version += generatedNumber.ToString();
                 await Task.Delay(100);
             }
-            counter = 0;
-        }
 
-        private bool CanExecute()
-        {
-            return counter == 0;
+            // Loop for generating some chars from ASCII table for test if binding works
+            for (int i = 0; i < 4; i++)
+            {
+                int generatedNumber = generator.Next(0, 10);
+                VersionV2 += generatedNumber.ToString();
+                await Task.Delay(100);
+            }
         }
 
         #region Properties
@@ -72,6 +76,26 @@ namespace GameDatabase
                 {
                     mVersion = value;
                     RaisePropertyChanged(nameof(Version));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Another version of the application
+        /// </summary>
+        public string VersionV2
+        {
+            get
+            {
+                return mVersion2;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    mVersion2 = value;
+                    RaisePropertyChanged(nameof(VersionV2));
                 }
             }
         }

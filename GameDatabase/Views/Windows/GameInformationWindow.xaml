@@ -23,7 +23,7 @@
 
         
             <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="{Binding Version, Mode=OneWay}" />
-        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" FontFamily="{StaticResource LatoBlack}" VerticalAlignment="Center" Text="{Binding Version, Mode=OneWay}" />
+        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" FontFamily="{StaticResource LatoBlack}" VerticalAlignment="Center" Text="{Binding VersionV2, Mode=OneWay}" />
 
 
 
