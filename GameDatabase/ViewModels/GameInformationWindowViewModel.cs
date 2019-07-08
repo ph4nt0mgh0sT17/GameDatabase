@@ -12,6 +12,7 @@ namespace GameDatabase
 
         private string mVersion;
         private string mVersion2;
+        private Random generator = new Random();
 
         #endregion
 
@@ -38,9 +39,15 @@ namespace GameDatabase
             Version = "Game Database v1.";
             VersionV2 = "Game Database v1.";
 
-            // Instantiate generator of automatic generation...
-            Random generator = new Random();
+            Parallel.Invoke(UpdateVersion, UpdateVersion2);
 
+            
+        }
+
+        #region Helper methods
+
+        private async void UpdateVersion()
+        {
             // Loop for generating some chars from ASCII table for test if binding works
             for (int i = 0; i < 4; i++)
             {
@@ -48,7 +55,10 @@ namespace GameDatabase
                 Version += generatedNumber.ToString();
                 await Task.Delay(100);
             }
+        }
 
+        private async void UpdateVersion2()
+        {
             // Loop for generating some chars from ASCII table for test if binding works
             for (int i = 0; i < 4; i++)
             {
@@ -57,6 +67,8 @@ namespace GameDatabase
                 await Task.Delay(100);
             }
         }
+
+        #endregion
 
         #region Properties
 
