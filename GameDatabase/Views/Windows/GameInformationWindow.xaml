@@ -1,0 +1,25 @@
+﻿<Window x:Class="GameDatabase.GameInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameDatabase"
+        mc:Ignorable="d"
+        Title="GameInformationWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Button Content="Generate version" Command="{Binding GenerateVersionCommand}" />
+        
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="SkyBlue">
+            <Grid Grid.Row="1" Background="#eee">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Version}" />
+            </Grid>
+
+        </Border>
+
+    </Grid>
+</Window>

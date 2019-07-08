@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +60,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\GameInfoView.xaml">
+    <Page Include="Views\Controls\GameInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainWindowView.xaml">
+    <Page Include="Views\Windows\GameInformationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -74,14 +79,19 @@
     </Compile>
     <Compile Include="Models\ApiModel\GameInformationModel.cs" />
     <Compile Include="Models\ApiModel\GameSearchResult.cs" />
+    <Compile Include="ViewModels\Base\AsyncRelayCommand.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
+    <Compile Include="ViewModels\GameInformationWindowViewModel.cs" />
     <Compile Include="ViewModels\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\GameInfoView.xaml.cs">
+    <Compile Include="Views\Controls\GameInfoView.xaml.cs">
       <DependentUpon>GameInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainWindowView.xaml.cs">
+    <Compile Include="Views\Windows\GameInformationWindow.xaml.cs">
+      <DependentUpon>GameInformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
