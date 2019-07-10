@@ -23,6 +23,21 @@ namespace GameDatabase
         public FooterControl()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+        public string FooterContent { get; } = Resource.Version;
+
+        public int FooterWidth
+        {
+            get { return (int)GetValue(FooterWidthProperty); }
+            set { SetValue(FooterWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FooterWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FooterWidthProperty =
+            DependencyProperty.Register("FooterWidth", typeof(int), typeof(FooterControl), new PropertyMetadata(0));
+
+
     }
 }

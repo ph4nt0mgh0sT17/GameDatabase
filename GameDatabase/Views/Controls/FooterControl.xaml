@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:GameDatabase"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="20" Background="#EEE" >
+        <Border BorderThickness="0,1,0,1" BorderBrush="Navy">
+            <TextBlock Text="{Binding Path=FooterContent}" Width="{Binding Path=FooterWidth}" TextAlignment="Center"/>
+        </Border>
     </Grid>
 </UserControl>
