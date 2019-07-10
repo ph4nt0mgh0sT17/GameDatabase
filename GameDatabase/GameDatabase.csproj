@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Models\ApiModel\GameInformationModel.cs" />
     <Compile Include="Models\ApiModel\GameSearchResult.cs" />
+    <Compile Include="Resources\Resource.cs" />
     <Compile Include="ViewModels\Base\AsyncRelayCommand.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
