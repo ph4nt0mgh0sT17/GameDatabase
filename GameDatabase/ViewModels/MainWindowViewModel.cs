@@ -17,12 +17,14 @@ namespace GameDatabase
     public class MainWindowViewModel : BaseViewModel
     {
         #region Private variables
+
         private string searchQuery;
         private ApiEngine apiEngine;
         private GameSearchResult selectedGame;
         private Visibility mGameSearchResultsVisibility;
         private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
-        private GameInfoViewModel mCurrentGame;
+        private GameInformationPage mGameContent;
+
         #endregion
 
         #region Constructor
@@ -62,7 +64,7 @@ namespace GameDatabase
         private async void GetGameInformation(GameSearchResult game)
         {
             GameInformationModel gameInfo = await apiEngine.GetGame(game);
-            CurrentGame = new GameInfoViewModel(gameInfo);
+            GameContent = new GameInformationPage(gameInfo);
         }
 
         #endregion
@@ -90,7 +92,7 @@ namespace GameDatabase
         
 
         /// <summary>
-        /// Visibility of Game search results
+        /// Visibility of Game search list results
         /// </summary>
         public Visibility GameSearchResultsVisibility
         {
@@ -160,17 +162,20 @@ namespace GameDatabase
             }
         }
 
-        public GameInfoViewModel CurrentGame
+        public GameInformationPage GameContent
         {
             get
             {
-                return mCurrentGame;
+                return mGameContent;
             }
 
             set
             {
-                mCurrentGame = value;
-                RaisePropertyChanged(nameof(CurrentGame));
+                if (value != null)
+                {
+                    mGameContent = value;
+                    RaisePropertyChanged(nameof(GameContent));
+                }
             }
         }
 
