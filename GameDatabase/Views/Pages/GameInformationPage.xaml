@@ -11,11 +11,22 @@
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
 
         <Border BorderThickness="0,0,0,2" BorderBrush="Navy" Grid.Row="0">
             <TextBlock Text="{Binding Path=GameModel.Name}"  TextAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
         </Border>
+
+        <Grid Grid.Row="1" Background="AliceBlue">
+            <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal" Margin="5, 10" Background="AliceBlue">
+                <Button Command="{Binding Path=BasicInformation}" Content="Basic information" Margin="0,0,10,0" Width="100"/>
+                <Button Command="{Binding Path=SummaryInformation}"  Content="Summary" Margin="0,0,10,0" Width="100"/>
+                <Button Content="Rating" Margin="0,0,10,0" Width="100"/>
+            </StackPanel>
+        </Grid>
+
+        <Frame Grid.Row="2" Margin="5" Content="{Binding Path=InformationContent}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
