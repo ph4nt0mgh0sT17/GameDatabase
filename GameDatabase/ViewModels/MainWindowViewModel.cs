@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace GameDatabase
 {
+    /// <summary>
+    /// View model of a MainWindowView
+    /// </summary>
     public class MainWindowViewModel : BaseViewModel
     {
         #region Private variables
@@ -22,6 +26,7 @@ namespace GameDatabase
         #endregion
 
         #region Constructor
+
         /// <summary>
         /// Initiliazing ViewModel
         /// </summary>
@@ -32,12 +37,12 @@ namespace GameDatabase
 
             // Setting visibility of results as hidden
             GameSearchResultsVisibility = Visibility.Hidden;
-
-            CurrentGame = new GameInfoViewModel(new GameInformationModel() { Name = "Test 123" }); 
         }
+
         #endregion
 
         #region Methods
+
         /// <summary>
         /// Gets games by parameter query game
         /// </summary>
