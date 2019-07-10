@@ -17,7 +17,7 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10">
+        <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                 <TextBlock Text="Search a game: "/>
                 <StackPanel>
                     <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -25,10 +25,9 @@
                           SelectedItem="{Binding Path=SelectedGame, Mode=OneWayToSource}"/>
                 </StackPanel>
             </StackPanel>
-        
-        <ScrollViewer Grid.Row="1" ScrollViewer.CanContentScroll="True">
-            <local:GameInfoView DataContext="{Binding CurrentGame, Mode=OneWay}" />
-        </ScrollViewer>
+
+        <Frame Grid.Row="1" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
+        </Frame>
 
         <local:FooterControl FooterWidth="{Binding ElementName=MainWindow, Path=ActualWidth}" Grid.Row="2"/>
     </Grid>

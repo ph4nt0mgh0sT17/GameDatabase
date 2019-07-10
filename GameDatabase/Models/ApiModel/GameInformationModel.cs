@@ -12,7 +12,7 @@ namespace GameDatabase
         public int Id { get; set; }
 
         [JsonProperty("age_ratings")]
-        public IList<int> AgeRatings { get; set; }
+        public List<int> AgeRatings { get; set; }
 
         [JsonProperty("aggregated_rating")]
         public double AggregatedRating { get; set; }
