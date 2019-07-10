@@ -10,6 +10,6 @@ namespace GameDatabase
     {
         public static string Title { get; } = "Game database application";
 
-        public static string Version { get; } = "Game database application version 1.0";
+        public static string Version { get; } = "Game database application version 1.01";
     }
 }
