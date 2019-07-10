@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameDatabase"
         mc:Ignorable="d"
-        Title="Game database" Height="450" Width="800">
+        Title="Game database" Height="450" Width="800" x:Name="MainWindow">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="7*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10">
@@ -21,10 +22,10 @@
                 </StackPanel>
             </StackPanel>
         
-        <ScrollViewer Grid.Row="2" ScrollViewer.CanContentScroll="True">
+        <ScrollViewer Grid.Row="1" ScrollViewer.CanContentScroll="True">
             <local:GameInfoView DataContext="{Binding CurrentGame, Mode=OneWay}" />
         </ScrollViewer>
-            
-        
+
+        <local:FooterControl FooterWidth="{Binding ElementName=MainWindow, Path=ActualWidth}" Grid.Row="2"/>
     </Grid>
 </Window>
