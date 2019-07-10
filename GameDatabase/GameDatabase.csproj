@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Controls\FooterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Controls\GameInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +109,9 @@
     <Compile Include="ViewModels\GameInformationWindowViewModel.cs" />
     <Compile Include="ViewModels\GameInfoViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\Controls\FooterControl.xaml.cs">
+      <DependentUpon>FooterControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\GameInfoView.xaml.cs">
       <DependentUpon>GameInfoView.xaml</DependentUpon>
     </Compile>
