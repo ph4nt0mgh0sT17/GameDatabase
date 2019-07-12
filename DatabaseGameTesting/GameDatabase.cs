@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameDatabase.API;
-using GameDatabase.Models.ApiModel;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GameDatabase;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Diagnostics;
