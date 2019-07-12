@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Texts.Designer.cs" />
+    <Compile Include="Footer\Texts.Designer.cs" />
+    <Compile Include="Application\Texts.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Texts.resx" />
+    <EmbeddedResource Include="Footer\Texts.resx" />
+    <EmbeddedResource Include="Application\Texts.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
