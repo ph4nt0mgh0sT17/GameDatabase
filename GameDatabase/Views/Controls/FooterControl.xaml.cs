@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GameDatabaseResources;
 
 namespace GameDatabase
 {
@@ -26,7 +27,7 @@ namespace GameDatabase
             DataContext = this;
         }
 
-        public string FooterContent { get; } = Resource.Version;
+        public string FooterContent { get; } = Texts.FooterVersion;
 
         public int FooterWidth
         {
