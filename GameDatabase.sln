@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDatabase", "GameDatabas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseGameTesting", "DatabaseGameTesting\DatabaseGameTesting.csproj", "{888FEA2F-B6EC-4536-B906-188AF8E64CC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDatabaseResources", "GameDatabaseResources\GameDatabaseResources.csproj", "{6E89E92D-A26A-4220-B9E4-2F89462A2B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{888FEA2F-B6EC-4536-B906-188AF8E64CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{888FEA2F-B6EC-4536-B906-188AF8E64CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{888FEA2F-B6EC-4536-B906-188AF8E64CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E89E92D-A26A-4220-B9E4-2F89462A2B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E89E92D-A26A-4220-B9E4-2F89462A2B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E89E92D-A26A-4220-B9E4-2F89462A2B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E89E92D-A26A-4220-B9E4-2F89462A2B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

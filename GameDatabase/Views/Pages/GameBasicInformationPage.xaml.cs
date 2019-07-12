@@ -23,7 +23,7 @@ namespace GameDatabase
         public GameBasicInformationPage(GameInformationModel gameModel)
         {
             InitializeComponent();
-            DataContext = new GameInformationPageViewModel(gameModel);
+            DataContext = new GameBasicInformationPageViewModel(gameModel);
         }
     }
 }
