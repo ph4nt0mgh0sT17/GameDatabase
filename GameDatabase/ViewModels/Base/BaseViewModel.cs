@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using GameDatabaseResources;
 
 namespace GameDatabase
 {
@@ -43,8 +44,6 @@ namespace GameDatabase
         /// </summary>
         public BaseViewModel()
         {
-            // Gets text from Resource folder
-            TitleApplication = Resource.Title;
 
             Width = 1024;
             Height = 768;
@@ -177,12 +176,7 @@ namespace GameDatabase
         {
             get
             {
-                return mTitleApplication;
-            }
-
-            private set
-            {
-                mTitleApplication = value;
+                return Texts.ApplicationName;
             }
         }
 
