@@ -60,16 +60,8 @@
   </resheader>
 
   <!-- Resources for the application -->
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Databáze her</value>
-  </data>
-
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>Databáze her - nastavení</value>
-  </data>
-
-  <data name="Author" xml:space="preserve">
-    <value>David Miko</value>
+  <data name="LanguageText" xml:space="preserve">
+    <value>Jazyk:</value>
   </data>
   
 </root>

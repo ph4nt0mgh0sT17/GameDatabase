@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace GameDatabaseResources.Application
+namespace GameDatabaseResources.Settings
 {
     public class Texts
     {
@@ -20,7 +20,7 @@ namespace GameDatabaseResources.Application
             {
                 if (object.Equals(mResourceManager, null))
                 {
-                    mResourceManager = new ResourceManager("GameDatabaseResources.Application.Texts", typeof(Texts).Assembly);
+                    mResourceManager = new ResourceManager("GameDatabaseResources.Settings.Texts", typeof(Texts).Assembly);
                 }
 
                 return mResourceManager;
@@ -40,27 +40,11 @@ namespace GameDatabaseResources.Application
             }
         }
 
-        public static string ApplicationName
+        public static string LanguageText
         {
             get
             {
-                return TextManager.GetString(nameof(ApplicationName), CultureInformation);
-            }
-        }
-
-        public static string Author
-        {
-            get
-            {
-                return TextManager.GetString(nameof(Author), CultureInformation);
-            }
-        }
-
-        public static string SettingsTitle
-        {
-            get
-            {
-                return TextManager.GetString(nameof(SettingsTitle), CultureInformation);
+                return TextManager.GetString(nameof(LanguageText), CultureInformation);
             }
         }
     }

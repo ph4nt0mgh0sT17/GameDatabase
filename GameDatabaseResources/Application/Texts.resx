@@ -63,9 +63,9 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>Game database application</value>
   </data>
-  
-  <data name="FooterVersion" xml:space="preserve">
-    <value>Game database application version 1.01</value>
+
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Game database application - settings</value>
   </data>
 
   <data name="Author" xml:space="preserve">
