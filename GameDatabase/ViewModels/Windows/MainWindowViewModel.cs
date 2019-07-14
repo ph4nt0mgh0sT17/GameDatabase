@@ -185,32 +185,9 @@ namespace GameDatabase
 
         private Action EmptyDelegate = delegate () { };
 
-        public RelayCommand ChangeLanguage
-        {
-            get
-            {
-                return new RelayCommand(new Action(() =>
-                {
-                    // Change culture info to english
-                    CultureInfo englishCulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentCulture = englishCulture;
-                    Thread.CurrentThread.CurrentUICulture = englishCulture;
-
-                    // Writes the language into Setting.txt file
-                    using (StreamWriter writer = new StreamWriter("Setting.txt"))
-                    {
-                        writer.WriteLine($"Language=en-US");
-                        writer.Flush();
-                        writer.Close();
-                    }
-
-                    // Restarts the application
-                    System.Windows.Forms.Application.Restart();
-                    System.Windows.Application.Current.Shutdown();
-                }));
-            }
-        }
-
+        /// <summary>
+        /// Opens settings from menu
+        /// </summary>
         public RelayCommand OpenSettings
         {
             get
@@ -230,6 +207,22 @@ namespace GameDatabase
             get
             {
                 return Texts.SearchText;
+            }
+        }
+
+        public string ApplicationName
+        {
+            get
+            {
+                return GameDatabaseResources.Menu.Texts.ApplicationName;
+            }
+        }
+
+        public string SettingsMenu
+        {
+            get
+            {
+                return GameDatabaseResources.Menu.Texts.SettingsMenu;
             }
         }
 
