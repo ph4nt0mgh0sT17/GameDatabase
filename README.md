@@ -1,4 +1,5 @@
-# Game database
+Header 1
 This application is database of all games in the world.
 
+Header 2
 It gets all the information from IGDB.com which provides free API.
