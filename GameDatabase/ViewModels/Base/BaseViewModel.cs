@@ -44,7 +44,7 @@ namespace GameDatabase
         /// </summary>
         public BaseViewModel()
         {
-
+            mTitleApplication = Texts.ApplicationName;
             Width = 1024;
             Height = 768;
 
@@ -176,7 +176,12 @@ namespace GameDatabase
         {
             get
             {
-                return Texts.ApplicationName;
+                return mTitleApplication;
+            }
+
+            set
+            {
+                mTitleApplication = value;
             }
         }
 
