@@ -1,4 +1,4 @@
-#
+# Game database application
 This application is database of all games in the world.
 
 Header 2
