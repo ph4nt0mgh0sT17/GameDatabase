@@ -44,10 +44,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Footer\Texts.Designer.cs" />
     <Compile Include="Application\Texts.Designer.cs" />
+    <Compile Include="Search\Texts.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Application\Texts.cs-cz.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Footer\Texts.cs-cz.resx" />
     <EmbeddedResource Include="Footer\Texts.resx" />
     <EmbeddedResource Include="Application\Texts.resx" />
+    <EmbeddedResource Include="Search\Texts.cs-cz.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search\Texts.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

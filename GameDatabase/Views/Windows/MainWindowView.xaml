@@ -9,6 +9,7 @@
         Height="{Binding Path=Height, Mode=TwoWay}" Width="{Binding Path=Width, Mode=TwoWay}" 
         MinWidth="{Binding Path=MinWidth, Mode=OneWay}" MinHeight="{Binding Path=MinHeight, Mode=OneWay}"
         Left="{Binding Path=LeftWindow, Mode=OneWay}" Top="{Binding Path=TopWindow, Mode=OneWay}"
+        
         x:Name="MainWindow">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,12 +19,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                <TextBlock Text="Search a game: "/>
+            <TextBlock Text="{Binding Path=SearchText}" Margin="0,0,10,0"/>
                 <StackPanel>
                     <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <ListView ItemsSource="{Binding Path=GameSearchResults}" DisplayMemberPath="Name" Visibility="{Binding Path=GameSearchResultsVisibility, Mode=OneWay}" Width="300" MaxHeight="125"
                           SelectedItem="{Binding Path=SelectedGame, Mode=OneWayToSource}"/>
-                </StackPanel>
+                <Button Content="Change language" Command="{Binding Path=ChangeLanguage}"/>
+            </StackPanel>
             </StackPanel>
 
         <Frame Grid.Row="1" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
