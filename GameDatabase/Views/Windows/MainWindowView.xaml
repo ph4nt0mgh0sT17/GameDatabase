@@ -9,7 +9,6 @@
         Height="{Binding Path=Height, Mode=TwoWay}" Width="{Binding Path=Width, Mode=TwoWay}" 
         MinWidth="{Binding Path=MinWidth, Mode=OneWay}" MinHeight="{Binding Path=MinHeight, Mode=OneWay}"
         Left="{Binding Path=LeftWindow, Mode=OneWay}" Top="{Binding Path=TopWindow, Mode=OneWay}"
-       
         x:Name="MainWindow">
     <Grid>
 
@@ -32,10 +31,13 @@
             </Grid.RowDefinitions>
 
             <!-- Author -->
-            <Grid Grid.Row="0" Background="PaleVioletRed">
-                <TextBlock Text="{Binding Path=ApplicationName, Mode=OneWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{StaticResource LatoBlack}" FontSize="24"/>
+            <Grid Grid.Row="0" Background="PaleVioletRed" x:Name="UserMenu">
+                <TextBlock Text="{Binding Path=ApplicationName, Mode=OneWay}" Margin="10 0 10 0" TextWrapping="Wrap" 
+                           MaxWidth="{Binding ElementName=UserMenu, Path=ActualWidth}" HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" TextAlignment="Center" FontFamily="{StaticResource LatoBlack}" FontSize="24"/>
             </Grid>
 
+            <!-- Search game menu item -->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
@@ -47,15 +49,43 @@
                 <Grid Grid.Row="0">
                     <Grid.InputBindings>
                         <MouseBinding MouseAction="LeftClick"
+                                      Command="{Binding Path=OpenSearchGame}"
+                                      />
+                    </Grid.InputBindings>
+
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="White"/>
+                                </Trigger>
+
+                                <Trigger Property="IsMouseOver" Value="False">
+                                    <Setter Property="Background" Value="SkyBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=SearchGameMenu, Mode=OneWay}" FontFamily="{StaticResource LatoBlack}" FontSize="24" />
+                </Grid>
+
+                <!-- Settings -->
+                <Grid Grid.Row="1">
+                    <Grid.InputBindings>
+                        <MouseBinding MouseAction="LeftClick"
                                       Command="{Binding Path=OpenSettings}"
                                       />
                     </Grid.InputBindings>
 
                     <Grid.Style>
-                        <Style>
+                        <Style TargetType="{x:Type Grid}">
                             <Style.Triggers>
-                                <Trigger Property="Grid.IsMouseOver" Value="True">
-                                    <Setter Property="Grid.Background" Value="White"/>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="White"/>
+                                </Trigger>
+
+                                <Trigger Property="IsMouseOver" Value="False">
+                                    <Setter Property="Background" Value="SkyBlue"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
