@@ -22,53 +22,28 @@ namespace GameDatabase
     {
         #region Private variables
 
-        private string searchQuery;
-        private ApiEngine apiEngine;
-        private GameSearchResult selectedGame;
-        private Visibility mGameSearchResultsVisibility;
-        private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
         private Page mGameContent;
+        private Window mMainWindow;
 
         #endregion
 
-        #region Constructor
+        #region Constructors 
 
-        /// <summary>
-        /// Initiliazing ViewModel
-        /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(Window window)
         {
-            // Initialize of Api engine
-            apiEngine = new ApiEngine();
-
-            // Setting visibility of results as hidden
-            GameSearchResultsVisibility = Visibility.Hidden;
+            mMainWindow = window;
         }
 
         #endregion
 
         #region Methods
 
-        /// <summary>
-        /// Gets games by parameter query game
-        /// </summary>
-        /// <param name="queryGame">Text of the game that is searched</param>
-        private async void GetGames(string queryGame)
+        private void SetDesignerResources(Window window)
         {
-            GameSearchResults.Clear();
-            List<GameSearchResult> gameResults = await apiEngine.GetSearchedGames(queryGame);
-            gameResults.ToList().ForEach(GameSearchResults.Add);
-        }
-
-        /// <summary>
-        /// Gets all information about current game.
-        /// And sets it to the ScrollViewer -> GameInformation
-        /// </summary>
-        /// <param name="game">Current game</param>
-        private async void GetGameInformation(GameSearchResult game)
-        {
-            GameInformationModel gameInfo = await apiEngine.GetGame(game);
-            GameContent = new GameInformationPage(gameInfo);
+            if (DesignerProperties.GetIsInDesignMode(window))
+            {
+                
+            }
         }
 
         #endregion
@@ -76,96 +51,8 @@ namespace GameDatabase
         #region Properties
 
         /// <summary>
-        /// Game search results
+        /// Current page in frame, these pages will change dynamically
         /// </summary>
-        public ObservableCollection<GameSearchResult> GameSearchResults
-        {
-            get
-            {
-                return gameSearchResults;
-            }
-
-            set
-            {
-                gameSearchResults = value;
-                RaisePropertyChanged(nameof(GameSearchResults));
-            }
-        }
-        
-
-        
-
-        /// <summary>
-        /// Visibility of Game search list results
-        /// </summary>
-        public Visibility GameSearchResultsVisibility
-        {
-            get
-            {
-                return mGameSearchResultsVisibility;
-            }
-
-            set
-            {
-                    mGameSearchResultsVisibility = value;
-                    RaisePropertyChanged(nameof(GameSearchResultsVisibility));
-            }
-        }
-
-        
-        /// <summary>
-        /// Selected game in SearchResults
-        /// </summary>
-        public GameSearchResult SelectedGame
-        {
-            get
-            {
-                return selectedGame;
-            }
-
-            set
-            {
-                if (value != null)
-                {
-                    selectedGame = value;
-                    GameSearchResults.Clear();
-                    GameSearchResultsVisibility = Visibility.Hidden;
-                    GetGameInformation(value);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Text in textbox -> searching query
-        /// </summary>
-        public string SearchQuery
-        {
-            get
-            {
-                return searchQuery;
-            }
-
-            set
-            {
-                searchQuery = value;
-
-                // If value has something then search results
-                if (value != "")
-                {
-                    GameSearchResultsVisibility = Visibility.Visible;
-                    GetGames(value);
-                }
-
-                // If value has empty string then set visibility as hidden
-                // And clear all results
-                else
-                {
-                    GameSearchResults.Clear();
-                    GameSearchResultsVisibility = Visibility.Hidden;
-                }
-            }
-        }
-
         public Page GameContent
         {
             get
@@ -183,7 +70,7 @@ namespace GameDatabase
             }
         }
 
-        private Action EmptyDelegate = delegate () { };
+        #region Commands
 
         /// <summary>
         /// Opens settings from menu
@@ -200,16 +87,29 @@ namespace GameDatabase
             }
         }
 
-        #region Control properties - texts
-
-        public string SearchText
+        /// <summary>
+        /// Invoked when user click on Search game
+        /// </summary>
+        public RelayCommand OpenSearchGame
         {
             get
             {
-                return Texts.SearchText;
+                return new RelayCommand(new Action(() =>
+                {
+                    SearchGamePage search = new SearchGamePage();
+                    GameContent = search;
+                }));
             }
         }
 
+        #endregion
+
+        #region Control properties - texts
+
+        
+        /// <summary>
+        /// The application name
+        /// </summary>
         public string ApplicationName
         {
             get
@@ -218,11 +118,25 @@ namespace GameDatabase
             }
         }
 
+        /// <summary>
+        /// Name of the settings menu item
+        /// </summary>
         public string SettingsMenu
         {
             get
             {
                 return GameDatabaseResources.Menu.Texts.SettingsMenu;
+            }
+        }
+
+        /// <summary>
+        /// Name of a search game menu item
+        /// </summary>
+        public string SearchGameMenu
+        {
+            get
+            {
+                return GameDatabaseResources.Menu.Texts.SearchGameMenu;
             }
         }
 
