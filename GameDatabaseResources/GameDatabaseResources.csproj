@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\Texts.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Footer\Texts.Designer.cs" />
     <Compile Include="Application\Texts.Designer.cs" />
@@ -54,6 +55,10 @@
     <EmbeddedResource Include="Footer\Texts.cs-cz.resx" />
     <EmbeddedResource Include="Footer\Texts.resx" />
     <EmbeddedResource Include="Application\Texts.resx" />
+    <EmbeddedResource Include="Menu\Texts.cs-cz.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\Texts.resx" />
     <EmbeddedResource Include="Search\Texts.cs-cz.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

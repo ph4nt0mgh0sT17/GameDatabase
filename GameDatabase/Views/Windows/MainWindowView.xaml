@@ -33,7 +33,7 @@
 
             <!-- Author -->
             <Grid Grid.Row="0" Background="PaleVioletRed">
-                <TextBlock Text="David Miko" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{StaticResource LatoBlack}" FontSize="24"/>
+                <TextBlock Text="{Binding Path=ApplicationName, Mode=OneWay}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{StaticResource LatoBlack}" FontSize="24"/>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -50,8 +50,17 @@
                                       Command="{Binding Path=OpenSettings}"
                                       />
                     </Grid.InputBindings>
-                    
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" FontFamily="{StaticResource LatoBlack}" FontSize="24" />
+
+                    <Grid.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="Grid.IsMouseOver" Value="True">
+                                    <Setter Property="Grid.Background" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=SettingsMenu, Mode=OneWay}" FontFamily="{StaticResource LatoBlack}" FontSize="24" />
                 </Grid>
 
             </Grid>
@@ -59,17 +68,16 @@
             
         </Grid>
 
-        <StackPanel Grid.Column="1" Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+        <!--<StackPanel Grid.Column="1" Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
             <TextBlock Text="{Binding Path=SearchText}" Margin="0,0,10,0"/>
                 <StackPanel>
                     <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <ListView ItemsSource="{Binding Path=GameSearchResults}" DisplayMemberPath="Name" Visibility="{Binding Path=GameSearchResultsVisibility, Mode=OneWay}" Width="300" MaxHeight="125"
                           SelectedItem="{Binding Path=SelectedGame, Mode=OneWayToSource}"/>
-                <Button Content="Change language" Command="{Binding Path=ChangeLanguage}"/>
             </StackPanel>
-            </StackPanel>
+            </StackPanel>-->
 
-        <Frame Grid.Column="1" Grid.Row="1" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
+        <Frame Grid.Column="1" Grid.RowSpan="2" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
         </Frame>
 
         <local:FooterControl Grid.ColumnSpan="2" FooterWidth="{Binding ElementName=MainWindow, Path=ActualWidth}" Grid.Row="2"/>
