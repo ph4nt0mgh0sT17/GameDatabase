@@ -9,16 +9,57 @@
         Height="{Binding Path=Height, Mode=TwoWay}" Width="{Binding Path=Width, Mode=TwoWay}" 
         MinWidth="{Binding Path=MinWidth, Mode=OneWay}" MinHeight="{Binding Path=MinHeight, Mode=OneWay}"
         Left="{Binding Path=LeftWindow, Mode=OneWay}" Top="{Binding Path=TopWindow, Mode=OneWay}"
-        
+       
         x:Name="MainWindow">
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="7*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <StackPanel Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+        <!-- Menu -->
+        <Grid Grid.RowSpan="2" Background="SkyBlue">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+
+            <!-- Author -->
+            <Grid Grid.Row="0" Background="PaleVioletRed">
+                <TextBlock Text="David Miko" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{StaticResource LatoBlack}" FontSize="24"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.InputBindings>
+                        <MouseBinding MouseAction="LeftClick"
+                                      Command="{Binding Path=OpenSettings}"
+                                      />
+                    </Grid.InputBindings>
+                    
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" FontFamily="{StaticResource LatoBlack}" FontSize="24" />
+                </Grid>
+
+            </Grid>
+
+            
+        </Grid>
+
+        <StackPanel Grid.Column="1" Panel.ZIndex="1000" Grid.RowSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
             <TextBlock Text="{Binding Path=SearchText}" Margin="0,0,10,0"/>
                 <StackPanel>
                     <TextBox Text="{Binding Path=SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -28,9 +69,9 @@
             </StackPanel>
             </StackPanel>
 
-        <Frame Grid.Row="1" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
+        <Frame Grid.Column="1" Grid.Row="1" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
         </Frame>
 
-        <local:FooterControl FooterWidth="{Binding ElementName=MainWindow, Path=ActualWidth}" Grid.Row="2"/>
+        <local:FooterControl Grid.ColumnSpan="2" FooterWidth="{Binding ElementName=MainWindow, Path=ActualWidth}" Grid.Row="2"/>
     </Grid>
 </Window>
