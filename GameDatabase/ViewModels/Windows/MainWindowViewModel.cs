@@ -27,7 +27,7 @@ namespace GameDatabase
         private GameSearchResult selectedGame;
         private Visibility mGameSearchResultsVisibility;
         private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
-        private GameInformationPage mGameContent;
+        private Page mGameContent;
 
         #endregion
 
@@ -166,7 +166,7 @@ namespace GameDatabase
             }
         }
 
-        public GameInformationPage GameContent
+        public Page GameContent
         {
             get
             {
@@ -207,6 +207,18 @@ namespace GameDatabase
                     // Restarts the application
                     System.Windows.Forms.Application.Restart();
                     System.Windows.Application.Current.Shutdown();
+                }));
+            }
+        }
+
+        public RelayCommand OpenSettings
+        {
+            get
+            {
+                return new RelayCommand(new Action(() =>
+                {
+                    SettingsPage settings = new SettingsPage();
+                    GameContent = settings;
                 }));
             }
         }
