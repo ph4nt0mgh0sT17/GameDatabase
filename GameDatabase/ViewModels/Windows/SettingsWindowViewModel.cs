@@ -23,6 +23,8 @@ namespace GameDatabase
         {
             TitleApplication = Texts.SettingsTitle;
             LanguageItems = new ObservableCollection<Language>() { new Language("Czech", "cs-cz"), new Language("English", "en-US") };
+
+            // Finds the language which is set as default language of the application
             mSelectedLanguage = LanguageItems.Single(language => language.Name == Setting.Language);
         }
 
