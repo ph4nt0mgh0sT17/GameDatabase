@@ -47,12 +47,20 @@ namespace GameDatabaseResources.Menu
                 return TextManager.GetString(nameof(ApplicationName), CultureInformation);
             }
         }
-
+        
         public static string SettingsMenu
         {
             get
             {
                 return TextManager.GetString(nameof(SettingsMenu), CultureInformation);
+            }
+        }
+
+        public static string SearchGameMenu
+        {
+            get
+            {
+                return TextManager.GetString(nameof(SearchGameMenu), CultureInformation);
             }
         }
     }

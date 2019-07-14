@@ -67,5 +67,9 @@
   <data name="SettingsMenu" xml:space="preserve">
     <value>Settings</value>
   </data>
+
+  <data name="SearchGameMenu" xml:space="preserve">
+    <value>Search a game</value>
+  </data>
   
 </root>
