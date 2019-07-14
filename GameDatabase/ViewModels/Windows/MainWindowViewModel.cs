@@ -1,13 +1,17 @@
-﻿using System;
+﻿using GameDatabaseResources.Search;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Threading;
 
 namespace GameDatabase
 {
@@ -179,7 +183,47 @@ namespace GameDatabase
             }
         }
 
+        private Action EmptyDelegate = delegate () { };
+
+        public RelayCommand ChangeLanguage
+        {
+            get
+            {
+                return new RelayCommand(new Action(() =>
+                {
+                    // Change culture info to english
+                    CultureInfo englishCulture = new CultureInfo("en-US");
+                    Thread.CurrentThread.CurrentCulture = englishCulture;
+                    Thread.CurrentThread.CurrentUICulture = englishCulture;
+
+                    // Writes the language into Setting.txt file
+                    using (StreamWriter writer = new StreamWriter("Setting.txt"))
+                    {
+                        writer.WriteLine($"Language=en-US");
+                        writer.Flush();
+                        writer.Close();
+                    }
+
+                    // Restarts the application
+                    System.Windows.Forms.Application.Restart();
+                    System.Windows.Application.Current.Shutdown();
+                }));
+            }
+        }
+
+        #region Control properties - texts
+
+        public string SearchText
+        {
+            get
+            {
+                return Texts.SearchText;
+            }
+        }
 
         #endregion
+
+        #endregion
+
     }
 }
