@@ -46,6 +46,14 @@ namespace GameDatabase
             // If there is no language set language as default
             else
             {
+                // Writes the language into Setting.txt file
+                using (StreamWriter writer = new StreamWriter(settingPath))
+                {
+                    writer.WriteLine($"Language=en-US");
+                    writer.Flush();
+                    writer.Close();
+                }
+
                 Setting.Language = "en-US";
             }
 

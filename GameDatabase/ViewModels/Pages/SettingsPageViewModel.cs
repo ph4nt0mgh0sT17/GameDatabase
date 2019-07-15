@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,8 +31,11 @@ namespace GameDatabase
 
         private void ChangeLanguage(Language changedLanguage)
         {
+            string applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string settingPath = Path.Combine(applicationPath, "Setting.txt");
+
             // Writes the language into Setting.txt file
-            using (StreamWriter writer = new StreamWriter("Setting.txt"))
+            using (StreamWriter writer = new StreamWriter(settingPath))
             {
                 writer.WriteLine($"Language={changedLanguage.Name}");
                 writer.Flush();
