@@ -22,6 +22,7 @@ namespace GameDatabase
         private GameSearchResult selectedGame;
         private Visibility mGameSearchResultsVisibility;
         private ObservableCollection<GameSearchResult> gameSearchResults = new ObservableCollection<GameSearchResult>();
+        private MainWindowViewModel mWindowModel;
 
         #endregion
 
@@ -30,13 +31,15 @@ namespace GameDatabase
         /// <summary>
         /// Initiliazing ViewModel
         /// </summary>
-        public SearchGameViewModel()
+        public SearchGameViewModel(MainWindowViewModel window)
         {
             // Initialize of Api engine
             apiEngine = new ApiEngine();
 
             // Setting visibility of results as hidden
             GameSearchResultsVisibility = Visibility.Hidden;
+
+            mWindowModel = window;
         }
 
         #endregion
@@ -62,6 +65,7 @@ namespace GameDatabase
         private async void GetGameInformation(GameSearchResult game)
         {
             GameInformationModel gameInfo = await apiEngine.GetGame(game);
+            mWindowModel.GameContent = new GameInformationPage(gameInfo);
         }
 
         #endregion

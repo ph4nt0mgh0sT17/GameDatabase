@@ -20,10 +20,10 @@ namespace GameDatabase
     /// </summary>
     public partial class SearchGamePage : Page
     {
-        public SearchGamePage()
+        public SearchGamePage(MainWindowViewModel model)
         {
             InitializeComponent();
-            DataContext = new SearchGameViewModel();
+            DataContext = new SearchGameViewModel(model);
         }
     }
 }

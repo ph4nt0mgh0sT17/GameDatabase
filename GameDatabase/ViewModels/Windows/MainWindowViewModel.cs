@@ -96,7 +96,7 @@ namespace GameDatabase
             {
                 return new RelayCommand(new Action(() =>
                 {
-                    SearchGamePage search = new SearchGamePage();
+                    SearchGamePage search = new SearchGamePage(this);
                     GameContent = search;
                 }));
             }
