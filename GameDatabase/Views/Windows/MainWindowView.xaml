@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:de="http://schemas.microsoft.com/expression/2010/drawing"
         xmlns:local="clr-namespace:GameDatabase"
         mc:Ignorable="d"
         Title="{Binding Path=TitleApplication, Mode=OneWay}" 
@@ -22,6 +23,8 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
+        
+        
         <!-- Menu -->
         <Grid Grid.RowSpan="2" Background="SkyBlue">
 
@@ -106,6 +109,7 @@
                           SelectedItem="{Binding Path=SelectedGame, Mode=OneWayToSource}"/>
             </StackPanel>
             </StackPanel>-->
+        
 
         <Frame Grid.Column="1" Grid.RowSpan="2" Content="{Binding Path=GameContent}" NavigationUIVisibility="Hidden">
         </Frame>

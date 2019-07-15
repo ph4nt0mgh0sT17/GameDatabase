@@ -63,7 +63,7 @@ namespace GameDatabase
             Thread.CurrentThread.CurrentCulture = currentCulture;
             Thread.CurrentThread.CurrentUICulture = currentCulture;
 
-            MainWindowView mainWindow = new MainWindowView();
+            Test mainWindow = new Test();
             mainWindow.Show();
         }
     }

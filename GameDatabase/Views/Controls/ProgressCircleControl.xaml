@@ -11,9 +11,13 @@
     <UserControl.Resources>
         <local:PercentToAngleConverter x:Key="PercentToAngleConverter"/>
     </UserControl.Resources>
+    
+    <!-- Circle progress control -->
     <Grid>
         <Ellipse Fill="Black" Margin="0"/>
-        <de:Arc ArcThickness="10" Margin="10" ArcThicknessUnit="Pixel" EndAngle="{Binding Path=ProgressPercent, Converter={StaticResource PercentToAngleConverter}}" Fill="White" Stretch="None" StartAngle="0"/>
+        <de:Arc ArcThickness="10" Margin="10" ArcThicknessUnit="Pixel" 
+                EndAngle="{Binding Path=ProgressPercent, Converter={StaticResource PercentToAngleConverter}}" 
+                Fill="White" Stretch="None" StartAngle="0"/>
 
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=PercentText}" Foreground="White" FontFamily="{StaticResource LatoBlack}" FontSize="36" />
     </Grid>
